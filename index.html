@@ -178,6 +178,24 @@
   .skill-category:last-child { margin-bottom: 0; }
   .skill-category h4 { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
   
+  /* ---------- timeline ---------- */
+  .timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 40px 0; }
+  .timeline::before {
+    content: ''; position: absolute; left: 24px; top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(var(--bg), var(--line), var(--accent), var(--line), var(--bg));
+  }
+  .timeline-item { position: relative; padding-left: 60px; margin-bottom: 48px; }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-node {
+    position: absolute; left: 19px; top: 4px; width: 11px; height: 11px;
+    background: var(--bg); border: 2px solid var(--accent); border-radius: 50%;
+    z-index: 2; transition: background .3s, transform .3s;
+  }
+  .timeline-item:hover .timeline-node { background: var(--accent); transform: scale(1.3); }
+  .timeline-meta { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); margin-bottom: 8px; }
+  .timeline-title { font-family: 'JetBrains Mono', monospace; font-size: 18px; color: var(--text); margin-bottom: 6px; }
+  .timeline-desc { font-size: 15px; color: var(--muted); line-height: 1.6; max-width: 60ch; }
+  
   /* ---------- projects ---------- */
   .project{
     border-top:1px solid var(--line);
@@ -419,6 +437,36 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">01.5</span>
+      <h2 class="sec-title">Journey</h2>
+      <span class="sec-rule"></span>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-node"></div>
+        <div class="timeline-meta">2023 - Present</div>
+        <h3 class="timeline-title">B.S. Software Engineering</h3>
+        <p class="timeline-desc">Focusing on low-level systems, network architecture, and algorithm design. Consistently building side projects to bridge theoretical concepts with practical applications.</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-node"></div>
+        <div class="timeline-meta">Summer 2025</div>
+        <h3 class="timeline-title">Systems Engineering Intern</h3>
+        <p class="timeline-desc">Developed high-performance C++ modules for internal tooling. Optimized graph traversal algorithms reducing compute time by 40%.</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-node"></div>
+        <div class="timeline-meta">2024</div>
+        <h3 class="timeline-title">Open Source Contributor</h3>
+        <p class="timeline-desc">Started contributing to various Python and C networking libraries. Built the foundation for BitChat and Network Monitoring systems.</p>
       </div>
     </div>
   </div>
