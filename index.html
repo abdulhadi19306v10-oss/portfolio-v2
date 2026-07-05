@@ -224,6 +224,25 @@
   @media(max-width:720px){.project{grid-template-columns:1fr;}.project-link{justify-self:start;}}
 
   /* ---------- connect ---------- */
+  .connect-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media(max-width: 840px) { .connect-container { grid-template-columns: 1fr; } }
+  .term-form {
+    background: rgba(17,24,38,.55); border: 1px solid var(--line); border-radius: 6px;
+    padding: 0; backdrop-filter: blur(6px); overflow: hidden;
+  }
+  .term-form .panel-bar { border-bottom: 1px solid var(--line); }
+  .term-form .panel-body { padding: 22px; display: flex; flex-direction: column; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .term-input-group { display: flex; flex-direction: column; gap: 6px; }
+  .term-input-group label { color: var(--muted); }
+  .term-input-group input, .term-input-group textarea {
+    background: transparent; border: 1px solid var(--line); color: var(--text); padding: 10px;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; border-radius: 2px;
+    outline: none; transition: border-color .3s;
+  }
+  .term-input-group input:focus, .term-input-group textarea:focus { border-color: var(--accent); }
+  .term-input-group textarea { resize: vertical; min-height: 80px; }
+  .term-form .btn-primary { align-self: flex-start; cursor: pointer; border: none; font-size: 12px; padding: 10px 20px; }
+
   .connect-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);}
   .connect-item{
     background:var(--bg);padding:28px 26px;position:relative;overflow:hidden;
@@ -522,15 +541,36 @@
       <h2 class="sec-title">Connect Space</h2>
       <span class="sec-rule"></span>
     </div>
-    <p class="reveal" style="color:var(--muted);margin-bottom:40px;max-width:50ch;">Find me across the web. Hover to illuminate each gateway.</p>
-    <div class="connect-grid reveal">
-      <a class="connect-item" href="https://github.com" target="_blank" rel="noopener"><div class="name">GitHub</div><div class="desc">Repositories & Code</div></a>
-      <a class="connect-item" href="https://linkedin.com" target="_blank" rel="noopener"><div class="name">LinkedIn</div><div class="desc">Professional Network</div></a>
-      <a class="connect-item" href="https://x.com" target="_blank" rel="noopener"><div class="name">Twitter / X</div><div class="desc">Insights & Updates</div></a>
-      <a class="connect-item" href="https://instagram.com" target="_blank" rel="noopener"><div class="name">Instagram</div><div class="desc">Visual Journal</div></a>
-      <a class="connect-item" href="https://discord.com" target="_blank" rel="noopener"><div class="name">Discord</div><div class="desc">Community & Chat</div></a>
-      <a class="connect-item" href="https://youtube.com" target="_blank" rel="noopener"><div class="name">YouTube</div><div class="desc">Dev Tutorials & Vlogs</div></a>
-      <a class="connect-item" href="https://dribbble.com" target="_blank" rel="noopener"><div class="name">Dribbble</div><div class="desc">Design Showcase</div></a>
+    <div class="connect-container reveal">
+      <!-- Terminal Form -->
+      <div class="term-form">
+        <div class="panel-bar"><span></span><span></span><span></span><div class="id">send_message.sh</div></div>
+        <form class="panel-body" onsubmit="event.preventDefault(); alert('Message feature ready to connect to a backend!');">
+          <div class="term-input-group">
+            <label>~ $ email --set</label>
+            <input type="email" required placeholder="your@email.com">
+          </div>
+          <div class="term-input-group">
+            <label>~ $ message --write</label>
+            <textarea required placeholder="Hello Hadi, let's build something..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary mono">> execute</button>
+        </form>
+      </div>
+
+      <!-- Social Grid -->
+      <div>
+        <p style="color:var(--muted);margin-bottom:20px;">Find me across the web. Hover to illuminate each gateway.</p>
+        <div class="connect-grid">
+          <a class="connect-item" href="https://github.com" target="_blank" rel="noopener"><div class="name">GitHub</div><div class="desc">Repositories & Code</div></a>
+          <a class="connect-item" href="https://linkedin.com" target="_blank" rel="noopener"><div class="name">LinkedIn</div><div class="desc">Professional Network</div></a>
+          <a class="connect-item" href="https://x.com" target="_blank" rel="noopener"><div class="name">Twitter / X</div><div class="desc">Insights & Updates</div></a>
+          <a class="connect-item" href="https://instagram.com" target="_blank" rel="noopener"><div class="name">Instagram</div><div class="desc">Visual Journal</div></a>
+          <a class="connect-item" href="https://discord.com" target="_blank" rel="noopener"><div class="name">Discord</div><div class="desc">Community & Chat</div></a>
+          <a class="connect-item" href="https://youtube.com" target="_blank" rel="noopener"><div class="name">YouTube</div><div class="desc">Dev Tutorials & Vlogs</div></a>
+          <a class="connect-item" href="https://dribbble.com" target="_blank" rel="noopener"><div class="name">Dribbble</div><div class="desc">Design Showcase</div></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
