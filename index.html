@@ -795,18 +795,46 @@ document.querySelectorAll('.swatch').forEach(sw=>{
   });
 });
 
-/* ============ hero status panel reveal + orbit ============ */
+/* ============ hero status panel reveal + orbit + typing ============ */
 if(document.getElementById('hero-panel')){
   anime({
     targets:'#hero-panel',
     opacity:[0,1], translateY:[24,0], scale:[0.96,1],
     duration:900, delay:600, easing:'easeOutExpo'
   });
+  
+  const panelDivs = document.querySelectorAll('.panel-body > div:not(.orbit-wrap)');
+  const typeData = [];
+  panelDivs.forEach(div => {
+    const vSpan = div.querySelector('.v');
+    if(vSpan) {
+      typeData.push({ span: vSpan, text: vSpan.textContent });
+      vSpan.textContent = '';
+    } else {
+      typeData.push(null);
+    }
+  });
+
   anime({
-    targets:'.panel-body > div',
+    targets: panelDivs,
     opacity:[0,1], translateX:[-12,0],
-    delay:anime.stagger(140,{start:1000}),
-    duration:500, easing:'easeOutQuad'
+    delay:anime.stagger(300,{start:1000}),
+    duration:400, easing:'easeOutQuad',
+    begin: function() {
+      panelDivs.forEach((div, i) => {
+        setTimeout(() => {
+          const data = typeData[i];
+          if(data) {
+            let charIndex = 0;
+            const typeInterval = setInterval(() => {
+              data.span.textContent += data.text[charIndex];
+              charIndex++;
+              if(charIndex >= data.text.length) clearInterval(typeInterval);
+            }, 25);
+          }
+        }, 1000 + (i * 300) + 100);
+      });
+    }
   });
   const radii=[46,46,46], speeds=[3200,4200,5200], offsets=[0,120,240];
   document.querySelectorAll('.orbit-node').forEach((node,i)=>{
